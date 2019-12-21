@@ -10,7 +10,7 @@
 		<meta name="minimize"/>
 		<meta name="maximize"/>
 		<meta name="resize" value="disabled"/>
-		<meta name="appIcon" value="res/svg/app-icon.svg"/>
+		<meta name="appIcon" value="res/svg/icon.svg"/>
 		<meta name="script" value="res/js/main.js"/>
 		<meta name="style" value="res/css/main.less" toolbar="res/css/toolbar.less"/>
 		<meta name="content" value="res/partials/content.htm"/>
