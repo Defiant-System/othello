@@ -1,0 +1,27 @@
+<MenuBar>
+	<Menu name="Othello">
+		<Menu name="About Othello"/>
+		<Menu type="divider"/>
+		<Menu name="New Game" click="new-game"/>
+		<Menu name="Reset Game" click="reset-game"/>
+		<Menu name="Options">
+			<Menu name="No Helpers" check-group="game-option" click="option-no-helpers"/>
+			<Menu type="divider"/>
+			<Menu name="Possibilities" check-group="game-option" click="option-possibilities"/>
+			<Menu name="Possibilities &amp; Values" check-group="game-option" click="option-possibilities-values" is-checked="1"/>
+		</Menu>
+		<Menu type="divider"/>
+		<Menu name="Hide Othello"/>
+		<Menu name="Hide Others"/>
+		<Menu name="Show All" disabled="1"/>
+		<Menu type="divider"/>
+		<Menu name="Quit Othello" shell="win -c"/>
+	</Menu>
+	<Menu name="Help">
+		<Menu name="How To Play"/>
+		<Menu type="divider"/>
+		<Menu name="Source Code"/>
+		<Menu type="divider"/>
+		<Menu name="License"/>
+	</Menu>
+</MenuBar>

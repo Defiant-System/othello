@@ -1,0 +1,11 @@
+<ToolBar>
+	<Group width="50%">
+		<Tool name="New Game" click="reset-game"/>
+	</Group>
+	<Group width="50%" class="toolbar-score">
+		<Field>
+			<span class="left white">Computer: <b>0</b></span>
+			<span class="right black">You: <b>0</b></span>
+		</Field>
+	</Group>
+</ToolBar>

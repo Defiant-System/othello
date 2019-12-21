@@ -1,0 +1,22 @@
+<Application>
+	<Head>
+		<meta name="id" value="othello"/>
+		<meta name="title" value="Othello" version="1.0"/>
+		<meta name="license" value="AGPL-3.0-or-later"/>
+		<meta name="width" value="470"/>
+		<meta name="height" value="471"/>
+		<meta name="top" value="70"/>
+		<meta name="left" value="550"/>
+		<meta name="minimize"/>
+		<meta name="maximize"/>
+		<meta name="resize" value="disabled"/>
+		<meta name="appIcon" value="res/svg/app-icon.svg"/>
+		<meta name="script" value="res/js/main.js"/>
+		<meta name="style" value="res/css/main.less" toolbar="res/css/toolbar.less"/>
+		<meta name="content" value="res/partials/content.htm"/>
+		<meta name="help" value="res/help/index.md"/>
+
+		@import "res/partials/toolbar.xml"
+		@import "res/partials/menubar.xml"
+	</Head>
+</Application>
