@@ -2,6 +2,7 @@
 	<Head>
 		<meta name="id" value="othello"/>
 		<meta name="title" value="Othello" version="1.0"/>
+		<meta name="author" value="Hakan Bilgin" namespace="ant"/>
 		<meta name="license" value="AGPL-3.0-or-later"/>
 		<meta name="width" value="470"/>
 		<meta name="height" value="471"/>
