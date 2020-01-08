@@ -1,6 +1,6 @@
 
 <h1>
-	<img src="/res/icons/app-icon-othello" style="float: left; width: 42px; margin: 3px 5px 0 0;">
+	<img src="~/icon.svg" style="float: left; width: 42px; margin: 3px 5px 0 0;">
 	Othello
 </h1>
 
@@ -31,7 +31,7 @@ A disc may outflank any number of discs in one or more rows in any direction (ho
 
 For example: a white piece is being placed on the board that creates a straight line made up of a white piece at either end and only black pieces in between.
 
-<img src="/app/othello/res/img/board-1.jpg" style="float: left; margin: 0 10px 10px 0;">
+<img src="~/img/board-1.jpg" style="float: left; margin: 0 10px 10px 0;">
 White places in the illustration a disc on E3.
 
 The black discs on E4, E5 and E6 are now outflanked by the white disc on E3 and the white disc on E7.

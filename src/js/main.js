@@ -56,6 +56,9 @@ const othello = {
 			case "new-game":
 				this.startGame();
 				break;
+			case "open-help":
+				defiant.shell("fs -u '~/help/index.md'");
+				break;
 			case "make-move":
 				cell = event.target;
 				if (progress == 0) {
