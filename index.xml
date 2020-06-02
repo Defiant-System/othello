@@ -12,7 +12,8 @@
 		<meta name="maximize"/>
 		<meta name="resize" value="disabled"/>
 		<meta name="script" value="src/js/main.js"/>
-		<meta name="style" value="src/css/main.less" toolbar="src/css/toolbar.less"/>
+		<meta name="style" value="src/css/main.less" />
+		<meta name="toolbar-style" value="src/css/toolbar.less"/>
 		<meta name="content" value="src/partials/content.htm"/>
 
 		@import "src/partials/toolbar.xml"
