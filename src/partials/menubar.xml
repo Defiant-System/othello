@@ -20,7 +20,7 @@
 	<Menu name="Help">
 		<Menu name="How To Play" click="open-help"/>
 		<Menu type="divider"/>
-		<Menu name="Source Code"/>
+		<Menu name="Output PGN" click="output-pgn"/>
 		<Menu type="divider"/>
 		<Menu name="License"/>
 	</Menu>

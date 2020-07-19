@@ -43,15 +43,40 @@ const othello = {
 		this.el.board.html(str);
 		// reference to cells
 		this.el.cells = this.el.board.find("td");
+
+		let pgn = window.settings.get("pgn");
+		if (pgn) {
+			this.dispatch({ type: "game-from-pgn", pgn });
+		}
 	},
 	dispatch(event) {
-		let cell;
+		let cell,
+			state;
 		switch (event.type) {
+			// system events
+			case "window.close":
+				if (this.el.gameBoard.hasClass("playing")) {
+					state = this.serialize();
+					window.settings.set("pgn", state);
+				} else {
+					window.settings.clear();
+				}
+				break;
 			// custom events
 			case "reset-game":
 				othello.el.gameBoard.prop({"className": "game-board"});
 				started = false;
 				progress = 1;
+				break;
+			case "output-pgn":
+				state = this.serialize();
+				console.log(state);
+				break;
+			case "game-from-pgn":
+				this.startGame(event.pgn);
+				break;
+			case "close-congratulations":
+				this.dispatch({ type: "reset-game" });
 				break;
 			case "new-game":
 				this.startGame();
@@ -82,7 +107,12 @@ const othello = {
 				break;
 		}
 	},
-	startGame() {
+	serialize() {
+		let board = this.el.cells.map(el =>(["white", "black"].indexOf(el.className.split(" ")[0]) + 1))
+						.join("").replace(/-1/g, "0");
+		return { move, board };
+	},
+	startGame(pgn) {
 		if (started) return;
 		started = true;
 
@@ -98,11 +128,18 @@ const othello = {
 			tmp_poss[i]["number"] = 0;
 			tmp_poss[i]["flips"] = "";
 		}
-		this.putPiece(1, 27);
-		this.putPiece(2, 28);
-		this.putPiece(2, 35);
-		this.putPiece(1, 36);
-		move = 0;
+		if (pgn) {
+			pgn.board.split("").map((piece, i) => {
+				this.putPiece(+piece, i);
+			});
+			move = pgn.move;
+		} else {
+			this.putPiece(1, 27);
+			this.putPiece(2, 28);
+			this.putPiece(2, 35);
+			this.putPiece(1, 36);
+			move = 0;
+		}
 		this.checkPossibilities(2);
 
 		if (computer == 2) this.KI();
@@ -123,21 +160,22 @@ const othello = {
 		this.el.blackScore.html(score.black);
 		this.el.whiteScore.html(score.white);
 	},
-	resetGame() {
-		started = false;
-	},
 	gameOver() {
 		let str = "Egalite";
 
-		// game finished
-		this.el.gameBoard.removeClass("playing").addClass("finished");
 		progress = 1;
 		started = false;
 		
 		if (score.white > score.black) {
+			// game finished
+			this.el.gameBoard.removeClass("playing").addClass("finished");
+
 			str = "Computer wins!";
 		} else if (score.white < score.black) {
 			str = "You win!";
+
+			// game finished
+			this.el.gameBoard.addClass("game-won");
 		}
 
 		this.el.gameOver.find(".winner").html(str);
@@ -217,6 +255,13 @@ const othello = {
 			} else {
 				this.el.cells.get(field).prop({"className": (color == 1) ? "white" : "black"});
 			}
+			this.el.gameBoard.cssSequence("flipping", "transitionend", el => {
+				if (!el.hasClass("flipping")) return;
+				el.removeClass("flipping");
+				el.find(".black.black-flip").prop({ className: "white" });
+				el.find(".white.white-flip").prop({ className: "black" });
+			});
+
 			fld[field] = color;
 			this.el.cells[field].innerHTML = "&#160;";
 			this.updateScore();
@@ -394,7 +439,7 @@ const othello = {
 			temp  = [],
 			temp2 = [],
 			temp3 = [];
-		
+
 		for (i=0; i<64; i++) {
 			tmp_poss[i]["number"] = poss[i]["number"];
 			tmp_poss[i]["flips"]  = poss[i]["flips"];

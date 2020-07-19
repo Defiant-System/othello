@@ -1,7 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
-
-@import "./mixins";
+@import url('https://fonts.googleapis.com/css2?family=Questrial&family=Tangerine&display=swap');
 
 @sprite: url('~/img/sprite.png');
 
@@ -17,7 +15,13 @@ content {
 	font-family: 'Questrial', serif;
 	letter-spacing: 1px;
 	border: 11px solid #141;
-	.select(none);
+	user-select: none;
+	box-shadow: 0 0 0;
+	transition: box-shadow 410ms;
+
+	&.flipping {
+		box-shadow: 0 0 1px transparent;
+	}
 
 	&.finished {
 		.game-start {
@@ -51,6 +55,78 @@ content {
 		}
 	}
 
+	&.game-won {
+		.congratulations  {
+			opacity: 1;
+			visibility: visible;
+
+			h2 {
+				animation: textBounce 1000ms 4 ease-in-out,
+							textColors 3500ms infinite;
+			}
+			.pyro {
+				> .before,
+				> .after {
+					animation: 1s bang ease-out infinite backwards,
+								1s gravity ease-in infinite backwards,
+								5s position linear infinite backwards;
+				}
+				> .after {
+					animation-delay: 1.25s, 1.25s, 1.25s;
+					animation-duration: 1.25s, 1.25s, 6.25s;
+				}
+			}
+		}
+		.board {
+			.black,
+			.white {
+				opacity: .35;
+			}
+		}
+	}
+
+	.congratulations {
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+		top: -11px;
+		left: -11px;
+		right: -11px;
+		bottom: -11px;
+		z-index: 99;
+		background: rgba(0,0,0,.4);
+		transition: opacity 300ms ease-in-out 100ms;
+		perspective: 100px;
+
+		h2 {
+			position: absolute;
+			top: 35%;
+			width: 100%;
+			text-align: center;
+			font-family: 'Tangerine', cursive;
+			font-size: 61px;
+			font-weight: 100;
+			transform: translateZ(0);
+		}
+
+		.pyro {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 100;
+
+			> .before,
+			> .after {
+				position: absolute;
+				width: 4px;
+				height: 4px;
+				border-radius: 50%;
+				.pyroShadowLoop(50);
+			}
+		}
+	}
+
 	.black,
 	.white {
 		width: 56px;
@@ -72,27 +148,24 @@ content {
 		background: @sprite 0px -684px no-repeat;
 	}
 	.black-flip:before {
-		.animation(blackFlip 400ms steps(12) forwards);
+		animation: blackFlip 400ms steps(12) forwards;
 	}
 	.white-flip:before {
-		.animation(whiteFlip 400ms steps(12) forwards);
+		animation: whiteFlip 400ms steps(12) forwards;
 	}
 	.hole {
 		background: @sprite -66px -2px no-repeat;
-		.animation(hole 200ms forwards);
+		animation: hole 200ms forwards;
 	}
 
 	.game-start {
-		background: #398439; /* Old browsers */
-		background: -moz-linear-gradient(top, #5a9258 0%, #41823e 37%, #387c35 38%, #2d642b 100%); /* FF3.6-15 */
-		background: -webkit-linear-gradient(top, #5a9258 0%,#41823e 37%,#387c35 38%,#2d642b 100%); /* Chrome10-25,Safari5.1-6 */
-		background: linear-gradient(to bottom, #5a9258 0%,#41823e 37%,#387c35 38%,#2d642b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		background: linear-gradient(to bottom, #5a9258 0%,#41823e 37%,#387c35 38%,#2d642b 100%);
 		position: absolute;
 		top: 113px;
 		left: 57px;
 		width: 334px;
 		height: 166px;
-		.transitionWhat(opacity, 400ms);
+		transition: opacity 400ms ease-in-out;
 
 		> div {
 		//	background-color: rgba(0,0,0,0.2);
@@ -199,7 +272,7 @@ content {
 	.board {
 		visibility: hidden;
 		opacity: 0;
-		.transitionWhat(opacity, 400ms);
+		transition: opacity 400ms ease-in-out;
 
 		table {
 			width: 448px;
@@ -217,17 +290,130 @@ content {
 			text-shadow: 0px 2px 1px rgba(0,0,0,0.35);
 		}
 	}
-
-	.keyframes(blackFlip; {
-		0%   { background-position: 0px 0px; }
-		100% { background-position: 0px -684px; }
-	});
-	.keyframes(whiteFlip; {
-		0%   { background-position: 0px -684px; }
-		100% { background-position: 0px 0px; }
-	});
-	.keyframes(hole; {
-		0%   { opacity: 0; }
-		100% { opacity: 1; }
-	});
 }
+
+@keyframes blackFlip {
+	0%   { background-position: 0px 0px; }
+	100% { background-position: 0px -684px; }
+}
+
+@keyframes whiteFlip {
+	0%   { background-position: 0px -684px; }
+	100% { background-position: 0px 0px; }
+}
+
+@keyframes hole {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+@keyframes textBounce {
+	  0%, 20%, 50%, 80%, 100% { transform: translateZ(0); }
+	  45% { transform: translateZ(-30px); }
+	  60% { transform: translateZ(-15px); }
+}
+
+@keyframes textColors {
+	100%, 0% { color: #ffb; }
+	20% { color: #fbf; }
+	40% { color: #bff; }
+	60% { color: #bbf; }
+	80% { color: #bfb; }
+}
+.pyroShadowLoop(@count) when (@count > 0) {
+    .pyroShadowLoop(@count - 1);
+    box-shadow+: 0 0 #fff;
+}
+
+// copied from: https://codepen.io/yshlin/pen/ylDEk
+@keyframes bang {
+	to {
+		box-shadow: -195px -358.6666666667px #ff3300,
+					-188px 74.3333333333px #9dff00,
+					86px -174.6666666667px #ff001e,
+					-70px -41.6666666667px #7b00ff,
+					199px -331.6666666667px #ff00d5,
+					-70px -103.6666666667px #c4ff00,
+					4px -387.6666666667px #00eeff,
+					-61px -229.6666666667px #ff002f,
+					112px -146.6666666667px #00ffdd,
+					187px 67.3333333333px #ff00b7,
+					-50px -396.6666666667px #5500ff,
+					177px -356.6666666667px #00eeff,
+					-165px -120.6666666667px #ff00b3,
+					151px 37.3333333333px #ff007b,
+					17px -32.6666666667px #00ff26,
+					215px -115.6666666667px #8cff00,
+					-139px -41.6666666667px #77ff00,
+					-84px -100.6666666667px #ff009d,
+					-90px -130.6666666667px #91ff00,
+					-100px -343.6666666667px #2600ff,
+					222px -415.6666666667px #9900ff,
+					-102px -216.6666666667px #ff0051,
+					-135px -414.6666666667px #00ff1e,
+					-130px -80.6666666667px #00ff73,
+					-83px -50.6666666667px #0d00ff,
+					149px -135.6666666667px #002bff,
+					-174px -307.6666666667px #004dff,
+					-155px -252.6666666667px #00ffb3,
+					28px -402.6666666667px #ffd000,
+					-150px -236.6666666667px #00ffd9,
+					249px -164.6666666667px #ff0004,
+					49px -94.6666666667px #1aff00,
+					-216px -98.6666666667px #00ff77,
+					-101px -147.6666666667px #2200ff,
+					240px 1.3333333333px #00ffea,
+					-55px -139.6666666667px #ff5900,
+					-120px 1.3333333333px #ff8800,
+					75px -265.6666666667px #00ffbb,
+					204px -4.6666666667px #ff00ea,
+					-76px -108.6666666667px #0044ff,
+					-180px -48.6666666667px #ff5500,
+					-129px -367.6666666667px #8000ff,
+					-19px -189.6666666667px #91ff00,
+					210px -100.6666666667px #ffc400,
+					-71px -170.6666666667px #00ff33,
+					-155px -117.6666666667px #0091ff,
+					66px -259.6666666667px #00ff9d,
+					98px -3.6666666667px #0026ff,
+					-143px -128.6666666667px #0dff00,
+					127px -47.6666666667px #00b3ff,
+					79px -216.6666666667px #ff00d9;
+	}
+}
+
+@keyframes gravity {
+	to {
+		transform: translateY(200px);
+		opacity: 0;
+	}
+}
+
+@keyframes position {
+	0%,
+	19.9% {
+		margin-top: 10%;
+		margin-left: 40%;
+	}
+	20%,
+	39.9% {
+		margin-top: 40%;
+		margin-left: 30%;
+	}
+	40%,
+	59.9% {
+		margin-top: 20%;
+		margin-left: 70%;
+	}
+	60%,
+	79.9% {
+		margin-top: 30%;
+		margin-left: 20%;
+	}
+	80%,
+	99.9% {
+		margin-top: 30%;
+		margin-left: 80%;
+	}
+}
+
