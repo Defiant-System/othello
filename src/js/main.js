@@ -170,17 +170,25 @@ const othello = {
 			// game finished
 			this.el.gameBoard.removeClass("playing").addClass("finished");
 
+			// play sound
+		 	window.audio.play("loose");
+
 			str = "Computer wins!";
 		} else if (score.white < score.black) {
-			str = "You win!";
-
 			// game finished
 			this.el.gameBoard.addClass("game-won");
+
+			// play sound
+		 	window.audio.play("win");
+
+			str = "You win!";
 		}
 
 		this.el.gameOver.find(".winner").html(str);
 		this.el.gameOver.find(".black-score").html(score.black);
 		this.el.gameOver.find(".white-score").html(score.white);
+		// clear settings
+		window.settings.clear();
 	},
 	toggle() {
 		if (!started) return;
@@ -221,12 +229,15 @@ const othello = {
 		}
 		this.checkPossibilities(computer);
 		
+		// play sound
+	 	window.audio.play("jingle-on");
+
 		if (this.checkMove() != 0) {
-			setTimeout(() => this.KI(), 1200);
+			setTimeout(() => this.KI(), 1500);
 		} else {
 			progress = 0;
 			this.checkPossibilities(player);
-			if (this.checkMove() == 0) setTimeout(() => this.gameOver(), 1200);
+			if (this.checkMove() == 0) setTimeout(() => this.gameOver(), 1500);
 			else {
 				for (let i=0; i<64; i++) {
 					if (poss[i]["number"] > 0) this.putPiece(5,i);
@@ -572,12 +583,16 @@ const othello = {
 		if (this.checkMove() == 0) {
 			this.checkPossibilities(computer);
 			
-			if (this.checkMove() == 0) setTimeout(() => this.gameOver(), 1200);
-			else setTimeout(() => this.KI(), 1200);
+			if (this.checkMove() == 0) setTimeout(() => this.gameOver(), 1500);
+			else setTimeout(() => this.KI(), 1500);
 
-		} else for (i=0; i<64; i++) {
-			if (poss[i]["number"] > 0) this.putPiece (5,i);
-			else if (fld[i] == 0) this.putPiece(0,i);
+		} else {
+			for (i=0; i<64; i++) {
+				if (poss[i]["number"] > 0) this.putPiece (5,i);
+				else if (fld[i] == 0) this.putPiece(0,i);
+			}
+			// play sound
+		 	window.audio.play("jingle-off");
 		}
 	}
 };

@@ -1,0 +1,6 @@
+<Sounds>
+	<i id="jingle-on" url="~/sound/jingle-on.mp3"/>
+	<i id="jingle-off" url="~/sound/jingle-off.mp3"/>
+	<i id="loose" url="~/sound/loose.mp3"/>
+	<i id="win" url="~/sound/win.mp3"/>
+</Sounds>
