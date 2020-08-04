@@ -1,6 +1,6 @@
 <MenuBar>
 	<Menu name="Othello">
-		<Menu name="About Othello"/>
+		<Menu name="About Othello" shell="win -a"/>
 		<Menu type="divider"/>
 		<Menu name="New Game" click="new-game"/>
 		<Menu name="Reset Game" click="reset-game"/>
