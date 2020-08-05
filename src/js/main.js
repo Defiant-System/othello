@@ -55,10 +55,11 @@ const othello = {
 		switch (event.type) {
 			// system events
 			case "window.close":
-				if (this.el.gameBoard.hasClass("playing")) {
+				if (this.el.gameBoard.hasClass("playing") && !this.el.gameBoard.hasClass("game-won")) {
 					state = this.serialize();
 					window.settings.set("pgn", state);
 				} else {
+					// clear settings
 					window.settings.clear();
 				}
 				break;
@@ -67,6 +68,8 @@ const othello = {
 				othello.el.gameBoard.prop({"className": "game-board"});
 				started = false;
 				progress = 1;
+				// clear settings
+				window.settings.clear();
 				break;
 			case "output-pgn":
 				state = this.serialize();
@@ -116,7 +119,7 @@ const othello = {
 		if (started) return;
 		started = true;
 
-		this.el.gameBoard.removeClass("finished").addClass("playing");
+		this.el.gameBoard.removeClass("finished game-won").addClass("playing");
 
 		for (let i=0; i<64; i++) {
 			this.putPiece(0,i);
