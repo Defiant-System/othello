@@ -11,10 +11,6 @@
 			<Menu name="Possibilities &amp; Values" check-group="game-option" click="option-possibilities-values" is-checked="1"/>
 		</Menu>
 		<Menu type="divider"/>
-		<Menu name="Hide Othello"/>
-		<Menu name="Hide Others"/>
-		<Menu name="Show All" disabled="1"/>
-		<Menu type="divider"/>
 		<Menu name="Quit Othello" shell="win -c"/>
 	</Menu>
 	<Menu name="Help">
