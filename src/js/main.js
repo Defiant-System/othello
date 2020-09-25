@@ -78,6 +78,9 @@ const othello = {
 			case "game-from-pgn":
 				this.startGame(event.pgn);
 				break;
+			case "toggle-sound":
+				window.audio.mute = event.checked;
+				break;
 			case "close-congratulations":
 				this.dispatch({ type: "reset-game" });
 				break;

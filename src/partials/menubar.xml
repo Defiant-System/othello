@@ -10,6 +10,7 @@
 			<Menu name="Possibilities" check-group="game-option" click="option-possibilities"/>
 			<Menu name="Possibilities &amp; Values" check-group="game-option" click="option-possibilities-values" is-checked="1"/>
 		</Menu>
+		<Menu name="Sound Effects" click="toggle-sound" check-group="sound-fx" is-checked="1"/>
 		<Menu type="divider"/>
 		<Menu name="Quit Othello" shell="win -c"/>
 	</Menu>
