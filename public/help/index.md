@@ -5,7 +5,7 @@
 </h1>
 
 ## How to play
-Othello is a simple game that you play on an 8 by 8 in (20 by 20 cm) checkered board with 64 double-sided black and white discs. The game is easy to learn, but it takes time to master and develop your strategies for winning the game.
+Othello is a simple game that you play on an 8 by 8 in checkered board with 64 double-sided black and white discs. The game is easy to learn, but it takes time to master and develop your strategies for winning the game.
 
 ### Object of the Game
 The goal is to get the majority of colour discs on the board at the end of the game.
