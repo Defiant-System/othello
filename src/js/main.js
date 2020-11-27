@@ -188,6 +188,14 @@ const othello = {
 		 	window.audio.play("win");
 
 			str = "You win!";
+		} else {
+			// game finished
+			this.el.gameBoard.removeClass("playing").addClass("finished");
+
+			// play sound
+		 	window.audio.play("win");
+		 	
+			str = "Draw!";
 		}
 
 		this.el.gameOver.find(".winner").html(str);
