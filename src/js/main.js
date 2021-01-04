@@ -79,7 +79,7 @@ const othello = {
 				this.startGame(event.pgn);
 				break;
 			case "toggle-sound":
-				window.audio.mute = event.checked;
+				window.audio.mute = event.checked < 0;
 				break;
 			case "close-congratulations":
 				this.dispatch({ type: "reset-game" });
