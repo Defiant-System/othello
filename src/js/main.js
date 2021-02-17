@@ -44,7 +44,7 @@ const othello = {
 		// reference to cells
 		this.el.cells = this.el.board.find("td");
 
-		let pgn = window.settings.get("pgn");
+		let pgn = window.settings.getItem("pgn");
 		if (pgn) {
 			this.dispatch({ type: "game-from-pgn", pgn });
 		}
@@ -57,7 +57,7 @@ const othello = {
 			case "window.close":
 				if (this.el.gameBoard.hasClass("playing") && !this.el.gameBoard.hasClass("game-won")) {
 					state = this.serialize();
-					window.settings.set("pgn", state);
+					window.settings.setItem("pgn", state);
 				} else {
 					// clear settings
 					window.settings.clear();
