@@ -1,72 +1,76 @@
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-	<defs>
-		<linearGradient id="othello_ID_1_" gradientUnits="userSpaceOnUse" x1="249.9995" y1="20" x2="249.9995" y2="480.0005">
-			<stop offset="0" style="stop-color:#A8D604"/>
-			<stop offset="1" style="stop-color:#509000"/>
-		</linearGradient>
-		<linearGradient id="othello_ID_2_" gradientUnits="userSpaceOnUse" x1="365" y1="63" x2="365" y2="207">
-			<stop offset="0" style="stop-color:#444"/>
-			<stop offset="1" style="stop-color:#222"/>
-		</linearGradient>
-		<linearGradient id="othello_ID_4_" gradientUnits="userSpaceOnUse" x1="135" y1="293" x2="135" y2="437">
-			<stop offset="0" style="stop-color:#444"/>
-			<stop offset="1" style="stop-color:#222"/>
-		</linearGradient>
-		<radialGradient id="othello_ID_6_" cx="136.334" cy="101.667" r="87.3442" fx="136.334" fy="62.8476" gradientUnits="userSpaceOnUse">
-			<stop offset="0" style="stop-color:#eee"/>
-			<stop offset="1" style="stop-color:#A9A9A9"/>
-		</radialGradient>
-		<linearGradient id="othello_ID_3_" gradientUnits="userSpaceOnUse" x1="365" y1="72" x2="365" y2="107.377">
-			<stop offset="0" style="stop-color:#888888"/>
-			<stop offset="0.1693" style="stop-color:#717171"/>
-			<stop offset="1" style="stop-color:#444"/>
-		</linearGradient>
-		<linearGradient id="othello_ID_5_" gradientUnits="userSpaceOnUse" x1="135" y1="302" x2="135" y2="337.377">
-			<stop offset="0" style="stop-color:#888888"/>
-			<stop offset="0.1693" style="stop-color:#717171"/>
-			<stop offset="1" style="stop-color:#444"/>
-		</linearGradient>
-		<linearGradient id="othello_ID_7_" gradientUnits="userSpaceOnUse" x1="135" y1="72" x2="135" y2="107.377">
-			<stop offset="0" style="stop-color:#FFFFFF"/>
-			<stop offset="1" style="stop-color:#DDDDDD"/>
-		</linearGradient>
-		<linearGradient id="othello_ID_8_" gradientUnits="userSpaceOnUse" x1="135.0005" y1="177.8369" x2="135.0005" y2="199.1016">
-			<stop offset="0" style="stop-color:#DDDDDD"/>
-			<stop offset="1" style="stop-color:#CCCCCC"/>
-		</linearGradient>
-		<filter x="-6.1%" y="-3.9%" width="112.1%" height="113.2%" filterUnits="objectBoundingBox" id="othello-filter-1">
-			<feOffset dx="0" dy="6" in="SourceAlpha" result="othelloShadowOffsetOuter1"></feOffset>
-			<feGaussianBlur stdDeviation="4" in="othelloShadowOffsetOuter1" result="othelloShadowBlurOuter1"></feGaussianBlur>
-			<feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="othelloShadowBlurOuter1" result="othelloShadowMatrixOuter1"></feColorMatrix>
-			<feMerge>
-				<feMergeNode in="othelloShadowMatrixOuter1"></feMergeNode>
-				<feMergeNode in="SourceGraphic"></feMergeNode>
-			</feMerge>
-		</filter>
-		<filter id="othello_DS_1" x="0" y="0" width="200%" height="200%">
-			<feDropShadow dx="5" dy="5" stdDeviation="0" flood-color="#fff" flood-opacity="1" />
-			<feDropShadow dx="-5" dy="-5" stdDeviation="0" flood-color="#262" flood-opacity="1" />
-		</filter>
-	</defs>
-
-	<g transform="translate(20, 20) scale(0.92)">
-		<path filter="url(#othello-filter-1)" fill="url(#othello_ID_1_)" d="M480,426.333c0,29.64-24.027,53.667-53.666,53.667H73.666C44.027,480,20,455.973,20,426.333V73.666 C20,44.027,44.027,20,73.666,20h352.668C455.973,20,480,44.027,480,73.666V426.333z"/>
-		<g opacity="0.13" filter="url(#othello_DS_1)">
-			<path d="M73.666,20C44.027,20,20,44.027,20,73.666V250h230V20H73.666z"/>
-			<path d="M250,250v230h176.334C455.973,480,480,455.973,480,426.333V250H250z"/>
-		</g>
-		<path fill="none" stroke="#509000" stroke-width="8" d="M480,426.333c0,29.64-24.027,53.667-53.666,53.667 H73.666C44.027,480,20,455.973,20,426.333V73.666C20,44.027,44.027,20,73.666,20h352.668C455.973,20,480,44.027,480,73.666V426.333z"/> 
-		<circle filter="url(#othello-filter-1)" fill="url(#othello_ID_2_)" cx="365" cy="135" r="72"/>
-		<path fill="url(#othello_ID_3_)" d="M408.667,97c0,11.654-19.55,10.332-43.666,10.332c-24.118,0-43.668,1.322-43.668-10.332 c0-11.653,19.55-25,43.668-25C389.117,72,408.667,85.347,408.667,97z"/>
-		<path fill="#444" d="M336.112,182.562c0-7.71,12.933-3.665,28.888-3.665s28.889-4.045,28.889,3.665 c0,7.709-12.934,16.539-28.889,16.539S336.112,190.271,336.112,182.562z"/>
-
-		<circle filter="url(#othello-filter-1)" fill="url(#othello_ID_4_)" cx="135" cy="365" r="72"/>
-		<path fill="url(#othello_ID_5_)" d="M178.667,327c0,11.654-19.55,10.332-43.666,10.332c-24.118,0-43.668,1.322-43.668-10.332 c0-11.653,19.55-25,43.668-25C159.117,302,178.667,315.347,178.667,327z"/>
-		<path fill="#444" d="M106.112,412.562c0-7.71,12.933-3.665,28.888-3.665s28.889-4.045,28.889,3.665 c0,7.709-12.934,16.539-28.889,16.539S106.112,420.271,106.112,412.562z"/>
-
-		<circle filter="url(#othello-filter-1)" fill="url(#othello_ID_6_)" cx="135" cy="135" r="72"/>
-		<path opacity="0.6" fill="url(#othello_ID_7_)" d="M178.667,97c0,11.654-19.55,10.332-43.666,10.332 c-24.118,0-43.668,1.322-43.668-10.332c0-11.653,19.55-25,43.668-25C159.117,72,178.667,85.347,178.667,97z"/>
-		<path opacity="0.5" fill="url(#othello_ID_8_)" d="M106.112,182.562c0-7.71,12.933-3.665,28.888-3.665s28.889-4.045,28.889,3.665 c0,7.709-12.934,16.539-28.889,16.539S106.112,190.271,106.112,182.562z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55">
+	<style type="text/css">
+		.st0{fill:url(#SVGID_1_);}
+		.st1{opacity:0.13;}
+		.st2{fill:#509000;}
+		.st3{fill:url(#SVGID_2_);filter:url(#othello-filter-1);}
+		.st4{fill:url(#SVGID_3_);}
+		.st5{fill:#444444;}
+		.st6{fill:url(#SVGID_4_);filter:url(#othello-filter-1);}
+		.st7{fill:url(#SVGID_5_);}
+		.st8{fill:url(#SVGID_6_);filter:url(#othello-filter-1);}
+		.st9{opacity:0.6;fill:url(#SVGID_7_);enable-background:new    ;}
+		.st10{opacity:0.5;fill:url(#SVGID_8_);enable-background:new    ;}
+	</style>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="7.0218" y1="75.122" x2="7.0218" y2="22.8344" gradientTransform="matrix(0.92 0 0 -0.92 21.04 72.56)">
+		<stop  offset="0" style="stop-color:#A8D604"/>
+		<stop  offset="1" style="stop-color:#509000"/>
+	</linearGradient>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="20.0937" y1="70.2343" x2="20.0937" y2="53.866" gradientTransform="matrix(0.92 0 0 -0.92 21.04 72.56)">
+		<stop  offset="0" style="stop-color:#444444"/>
+		<stop  offset="1" style="stop-color:#222222"/>
+	</linearGradient>
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="20.0937" y1="69.2112" x2="20.0937" y2="65.19" gradientTransform="matrix(0.92 0 0 -0.92 21.04 72.56)">
+		<stop  offset="0" style="stop-color:#888888"/>
+		<stop  offset="0.1693" style="stop-color:#717171"/>
+		<stop  offset="1" style="stop-color:#444444"/>
+	</linearGradient>
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="-6.0501" y1="44.0904" x2="-6.0501" y2="27.7221" gradientTransform="matrix(0.92 0 0 -0.92 21.04 72.56)">
+		<stop  offset="0" style="stop-color:#444444"/>
+		<stop  offset="1" style="stop-color:#222222"/>
+	</linearGradient>
+	<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="-6.0501" y1="43.0674" x2="-6.0501" y2="39.0461" gradientTransform="matrix(0.92 0 0 -0.92 21.04 72.56)">
+		<stop  offset="0" style="stop-color:#888888"/>
+		<stop  offset="0.1693" style="stop-color:#717171"/>
+		<stop  offset="1" style="stop-color:#444444"/>
+	</linearGradient>
+	<radialGradient id="SVGID_6_" cx="-5.8985" cy="65.839" r="9.9283" fx="-5.8985" fy="61.4265" gradientTransform="matrix(0.92 0 0 -0.92 21.04 72.56)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#EEEEEE"/>
+		<stop  offset="1" style="stop-color:#A9A9A9"/>
+	</radialGradient>
+	<linearGradient id="SVGID_7_" gradientUnits="userSpaceOnUse" x1="-6.0501" y1="69.2112" x2="-6.0501" y2="65.19" gradientTransform="matrix(0.92 0 0 -0.92 21.04 72.56)">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#DDDDDD"/>
+	</linearGradient>
+	<linearGradient id="SVGID_8_" gradientUnits="userSpaceOnUse" x1="-6.05" y1="57.1809" x2="-6.05" y2="54.7638" gradientTransform="matrix(0.92 0 0 -0.92 21.04 72.56)">
+		<stop  offset="0" style="stop-color:#DDDDDD"/>
+		<stop  offset="1" style="stop-color:#CCCCCC"/>
+	</linearGradient>
+	<filter x="-6.1%" y="-3.9%" width="112.1%" height="113.2%" filterUnits="objectBoundingBox" id="othello-filter-1">
+		<feOffset dx="0" dy=".75" in="SourceAlpha" result="othelloShadowOffsetOuter1"></feOffset>
+		<feGaussianBlur stdDeviation=".25" in="othelloShadowOffsetOuter1" result="othelloShadowBlurOuter1"></feGaussianBlur>
+		<feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" type="matrix" in="othelloShadowBlurOuter1" result="othelloShadowMatrixOuter1"></feColorMatrix>
+		<feMerge>
+			<feMergeNode in="othelloShadowMatrixOuter1"></feMergeNode>
+			<feMergeNode in="SourceGraphic"></feMergeNode>
+		</feMerge>
+	</filter>
+	<path class="st0" d="M51.6,45.9c0,3.1-2.5,5.6-5.6,5.6H9.1c-3.1,0-5.6-2.5-5.6-5.6V9.1C3.4,6,6,3.4,9.1,3.4h36.9
+		c3.1,0,5.6,2.5,5.6,5.6V45.9z"/>
+	<g class="st1">
+		<path d="M9.1,3.4C6,3.4,3.4,6,3.4,9.1v18.4h24.1V3.4H9.1z"/>
+		<path d="M27.5,27.5v24.1h18.4c3.1,0,5.6-2.5,5.6-5.6V27.5H27.5z"/>
 	</g>
+	<path class="st2" d="M45.9,52H9.1c-3.3,0-6-2.7-6-6V9.1c0-3.3,2.7-6,6-6h36.9c3.3,0,6,2.7,6,6v36.9C52,49.3,49.3,52,45.9,52z
+		 M9.1,3.9c-2.9,0-5.2,2.3-5.2,5.2v36.9c0,2.9,2.3,5.2,5.2,5.2h36.9c2.9,0,5.2-2.3,5.2-5.2V9.1c0-2.9-2.3-5.2-5.2-5.2H9.1z"/>
+	<circle class="st3" cx="39.5" cy="15.5" r="7.5"/>
+	<path class="st4" d="M44.1,11.5c0,1.2-2,1.1-4.6,1.1c-2.5,0-4.6,0.1-4.6-1.1c0-1.2,2-2.6,4.6-2.6C42,8.9,44.1,10.3,44.1,11.5z"/>
+	<path class="st5" d="M36.5,20.4c0-0.8,1.4-0.4,3-0.4c1.7,0,3-0.4,3,0.4c0,0.8-1.4,1.7-3,1.7S36.5,21.3,36.5,20.4z"/>
+	<circle class="st6" cx="15.5" cy="39.5" r="7.5"/>
+	<path class="st7" d="M20,35.6c0,1.2-2,1.1-4.6,1.1c-2.5,0-4.6,0.1-4.6-1.1c0-1.2,2-2.6,4.6-2.6C18,32.9,20,34.3,20,35.6z"/>
+	<path class="st5" d="M12.5,44.5c0-0.8,1.4-0.4,3-0.4s3-0.4,3,0.4c0,0.8-1.4,1.7-3,1.7S12.5,45.3,12.5,44.5z"/>
+	<circle class="st8" cx="15.5" cy="15.5" r="7.5"/>
+	<path class="st9" d="M20,11.5c0,1.2-2,1.1-4.6,1.1c-2.5,0-4.6,0.1-4.6-1.1c0-1.2,2-2.6,4.6-2.6C18,8.9,20,10.3,20,11.5z"/>
+	<path class="st10" d="M12.5,20.4c0-0.8,1.4-0.4,3-0.4s3-0.4,3,0.4c0,0.8-1.4,1.7-3,1.7S12.5,21.3,12.5,20.4z"/>
 </svg>
