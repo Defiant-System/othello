@@ -1,21 +1,21 @@
 
 /* latin */
 @font-face {
-  font-family: 'Questrial';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(~/fonts/questrial.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	font-family: 'Questrial';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url(~/fonts/questrial.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* latin */
 @font-face {
-  font-family: 'Tangerine';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(~/fonts/tangerine.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	font-family: 'Tangerine';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url(~/fonts/tangerine.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 
@@ -74,7 +74,7 @@ content {
 	}
 
 	&.game-won {
-		.congratulations  {
+		.congratulations  {
 			opacity: 1;
 			visibility: visible;
 
@@ -103,7 +103,7 @@ content {
 		}
 	}
 
-	.congratulations {
+	.congratulations {
 		opacity: 0;
 		visibility: hidden;
 		position: absolute;
@@ -159,18 +159,23 @@ content {
 			bottom: -1px;
 		}
 	}
+
 	.black:before {
 		background: @sprite 0px 0px no-repeat;
 	}
+
 	.white:before {
 		background: @sprite 0px -684px no-repeat;
 	}
+
 	.black-flip:before {
 		animation: blackFlip 400ms steps(12) forwards;
 	}
+
 	.white-flip:before {
 		animation: whiteFlip 400ms steps(12) forwards;
 	}
+
 	.hole {
 		background: @sprite -66px -2px no-repeat;
 		animation: hole 200ms forwards;
@@ -194,10 +199,12 @@ content {
 			top: 36px;
 			left: 240px;
 		}
+
 		.white {
 			top: 36px;
 			left: 40px;
 		}
+
 		.th {
 			top: 27px;
 			left: 95px;
@@ -205,6 +212,7 @@ content {
 			height: 60px;
 			background: @sprite -63px -114px no-repeat;
 		}
+
 		.ell {
 			top: 27px;
 			left: 161px;
@@ -212,6 +220,7 @@ content {
 			height: 62px;
 			background: @sprite -63px -174px no-repeat;
 		}
+
 		.divider {
 			top: 109px;
 			left: 30px;
@@ -220,6 +229,7 @@ content {
 			border-top: 1px solid rgba(0,0,0,0.1);
 			border-bottom: 1px solid rgba(255,255,255,0.1);
 		}
+
 		.info {
 			top: 128px;
 			left: 45px;
@@ -258,6 +268,7 @@ content {
 			width: 25px;
 			height: 25px;
 		}
+
 		.white-small {
 			background: @sprite -94px -86px no-repeat;
 			top: 120px;
@@ -265,18 +276,21 @@ content {
 			width: 25px;
 			height: 25px;
 		}
+
 		.black-score {
 			top: 120px;
 			left: 248px;
 			font: 23px Questrial;
 			color: #000;
 		}
+
 		.white-score {
 			top: 120px;
 			left: 59px;
 			font: 23px Questrial;
 			color: #fff;
 		}
+		
 		.winner {
 			letter-spacing: .5px;
 			top: 125px;
