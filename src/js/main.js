@@ -88,7 +88,7 @@ const othello = {
 				this.startGame();
 				break;
 			case "open-help":
-				defiant.shell("fs -u '~/help/index.md'");
+				karaqu.shell("fs -u '~/help/index.md'");
 				break;
 			case "make-move":
 				cell = event.target;
