@@ -1,6 +1,6 @@
 <ToolBar>
 	<Group width="50%">
-		<Tool name="New Game" click="reset-game"/>
+		<Tool name="Reset" click="reset-game"/>
 	</Group>
 	<Group width="50%" class="toolbar-score">
 		<Field>

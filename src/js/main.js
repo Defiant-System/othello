@@ -68,6 +68,9 @@ const othello = {
 				othello.el.gameBoard.prop({"className": "game-board"});
 				started = false;
 				progress = 1;
+				// reset toolbar score
+				othello.el.blackScore.html(0);
+				othello.el.whiteScore.html(0);
 				// clear settings
 				window.settings.clear();
 				break;
