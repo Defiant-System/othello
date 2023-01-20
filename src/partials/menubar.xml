@@ -4,13 +4,13 @@
 		<Menu type="divider"/>
 		<Menu name="New Game" click="new-game"/>
 		<Menu name="Reset Game" click="reset-game"/>
-		<Menu name="Options">
+		<Menu name="Show&#8230;">
 			<Menu name="No Helpers" check-group="game-option" click="option-no-helpers"/>
 			<Menu type="divider"/>
 			<Menu name="Possibilities" check-group="game-option" click="option-possibilities"/>
-			<Menu name="Possibilities &amp; Values" check-group="game-option" click="option-possibilities-values" is-checked="1"/>
+			<Menu name="Possibilities &amp; Values" check-group="game-option" click="option-possibilities-values"/>
 		</Menu>
-		<Menu name="Sound Effects" click="toggle-sound" check-group="sound-fx" is-checked="1"/>
+		<Menu name="Sound Effects" check-group="sound-fx" click="toggle-sound"/>
 		<Menu type="divider"/>
 		<Menu name="Quit Othello" shell="win -c"/>
 	</Menu>

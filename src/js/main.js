@@ -20,6 +20,12 @@ let value = new Array(50, -1, 5, 2, 2, 5, -1, 50,
 					  -1, -10, 1, 1, 1, 1, -10, -1,
 					  50, -1, 5, 2, 2, 5, -1, 50);
 
+// default settings
+const defaultSettings = {
+	"sound-fx": "on",
+	"game-option": "option-possibilities",
+};
+
 const othello = {
 	el: {},
 	init() {
@@ -30,15 +36,42 @@ const othello = {
 		this.el.blackScore = window.find(".toolbar-score .black b");
 		this.el.whiteScore = window.find(".toolbar-score .white b");
 
-		let str = "<table cellpadding=\"0\" cellspacing=\"0\">";
-		for (let i=0; i<8; i++) {
-			str += "<tr>";
-			for (let j=0; j<8; j++) {
-				str += "<td align=\"center\" valign=\"middle\">&nbsp;</td>";
-			}
-			str += "</tr>";
+		// get settings, if any
+		this.settings = window.settings.getItem("settings") || defaultSettings;
+
+		// apply settings
+		for (let type in this.settings) {
+			let arg = this.settings[type];
+			// update menu
+			window.bluePrint.selectNodes(`//Menu[@check-group="${type}"]`).map(xMenu => {
+				if (type === "sound-fx") {
+					if (arg === "on") {
+						xMenu.setAttribute("is-checked", 1);
+						this.dispatch({ type: "toggle-sound", checked: 1 });
+					} else {
+						xMenu.removeAttribute("is-checked");
+						this.dispatch({ type: "toggle-sound", checked: -1 });
+					}
+				} else {
+					let xArg = xMenu.getAttribute("click");
+					if (xArg == arg) xMenu.setAttribute("is-checked", 1);
+					else xMenu.removeAttribute("is-checked");
+					// call dispatch
+					this.dispatch({ type: arg });
+				}
+			});
 		}
-		str += "</table>";
+
+
+		let str = `<table cellpadding="0" cellspacing="0">`;
+		for (let y=0; y<8; y++) {
+			str += `<tr>`;
+			for (let x=0; x<8; x++) {
+				str += `<td align="center" valign="middle" y="${y}" x="${x}">&nbsp;</td>`;
+			}
+			str += `</tr>`;
+		}
+		str += `</table>`;
 		// append board html
 		this.el.board.html(str);
 		// reference to cells
@@ -50,17 +83,18 @@ const othello = {
 		}
 	},
 	dispatch(event) {
-		let cell,
+		let Self = othello,
+			cell,
 			state;
 		switch (event.type) {
 			// system events
 			case "window.close":
-				if (this.el.gameBoard.hasClass("playing") && !this.el.gameBoard.hasClass("game-won")) {
-					state = this.serialize();
+				// save settings
+				window.settings.setItem("settings", Self.settings);
+
+				if (Self.el.gameBoard.hasClass("playing") && !Self.el.gameBoard.hasClass("game-won")) {
+					state = Self.serialize();
 					window.settings.setItem("pgn", state);
-				} else {
-					// clear settings
-					window.settings.clear();
 				}
 				break;
 			// custom events
@@ -75,20 +109,22 @@ const othello = {
 				window.settings.clear();
 				break;
 			case "output-pgn":
-				state = this.serialize();
+				state = Self.serialize();
 				console.log(state);
 				break;
 			case "game-from-pgn":
-				this.startGame(event.pgn);
+				Self.startGame(event.pgn);
 				break;
 			case "toggle-sound":
 				window.audio.mute = event.checked < 0;
+				// update settings
+				Self.settings["sound-fx"] = window.audio.mute ? "off" : "on";
 				break;
 			case "close-congratulations":
-				this.dispatch({ type: "reset-game" });
+				Self.dispatch({ type: "reset-game" });
 				break;
 			case "new-game":
-				this.startGame();
+				Self.startGame();
 				break;
 			case "open-help":
 				karaqu.shell("fs -u '~/help/index.md'");
@@ -96,23 +132,29 @@ const othello = {
 			case "make-move":
 				cell = event.target;
 				if (progress == 0) {
-					this.put((cell.parentNode.rowIndex * 8) + cell.cellIndex);
+					Self.put((cell.parentNode.rowIndex * 8) + cell.cellIndex);
 				}
 				break;
 			case "option-no-helpers":
 				show_poss = 0;
 				show_values = 0;
-				this.toggle();
+				Self.toggle();
+				// update settings
+				Self.settings["game-option"] = event.type;
 				break;
 			case "option-possibilities":
 				show_poss = 1;
 				show_values = 0;
-				this.toggle();
+				Self.toggle();
+				// update settings
+				Self.settings["game-option"] = event.type;
 				break;
 			case "option-possibilities-values":
 				show_poss = 1;
 				show_values = 1;
-				this.toggle();
+				Self.toggle();
+				// update settings
+				Self.settings["game-option"] = event.type;
 				break;
 		}
 	},
