@@ -1,7 +1,7 @@
 <Application>
 	<Head>
 		<meta name="id" value="othello"/>
-		<meta name="title" value="Othello" version="1.74"/>
+		<meta name="title" value="Othello" version="1.75"/>
 		<meta name="author" value="Hakan Bilgin" namespace="ant"/>
 		<meta name="license" value="AGPL-3.0-or-later"/>
 		<meta name="repository" value="https://github.com/Defiant-System/othello"/>
