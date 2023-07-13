@@ -22,6 +22,7 @@
 @sprite: url('~/img/sprite.png');
 
 background: transparent;
+overflow: visible;
 
 content {
 	background: #114410 url('~/img/bg.jpg') 50% 50% no-repeat;
@@ -88,9 +89,9 @@ content {
 			.pyro {
 				> .before,
 				> .after {
-					animation: 1s bang ease-out infinite backwards,
-								1s gravity ease-in infinite backwards,
-								5s position linear infinite backwards;
+					animation: 1s bang ease-out 7 backwards,
+								1s gravity ease-in 7 backwards,
+								5s position linear 7 backwards;
 				}
 
 				> .after {
@@ -377,6 +378,7 @@ content {
 	60% { color: #bbf; }
 	80% { color: #bfb; }
 }
+
 .pyroShadowLoop(@count) when (@count > 0) {
     .pyroShadowLoop(@count - 1);
     box-shadow+: 0 0 #fff;
