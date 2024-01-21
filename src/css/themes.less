@@ -28,7 +28,20 @@
 }
 
 [data-ui="royale-pink"] {
+	.toolbar-score {
+		filter: hue-rotate(165deg);
+	}
+
 	.win-body_ content {
-		filter: hue-rotate(155deg);
+		filter: hue-rotate(175deg) saturate(1.25) brightness(1.5);
+
+		.game-start {
+			background: linear-gradient(to bottom, #82ce7f 0%, #62c05d 37%, #58c454 38%, #469b43 100%);
+			filter: brightness(0.65);
+		}
+
+		.board table {
+			filter: brightness(0.65);
+		}
 	}
 }
