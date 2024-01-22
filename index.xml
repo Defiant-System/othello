@@ -1,13 +1,13 @@
 <Application>
 	<Head>
 		<meta name="id" value="othello"/>
-		<meta name="title" value="Othello" version="1.80"/>
+		<meta name="title" value="Othello" version="1.81"/>
 		<meta name="author" value="Hakan Bilgin" namespace="ant"/>
 		<meta name="license" value="AGPL-3.0-or-later"/>
 		<meta name="repository" value="https://github.com/Defiant-System/othello"/>
 		<meta name="width" value="470"/>
 		<meta name="height" value="471"/>
-		<meta name="top" value="70"/>
+		<meta name="top" value="210"/>
 		<meta name="left" value="550"/>
 		<meta name="minimize"/>
 		<meta name="maximize" value="disabled"/>
