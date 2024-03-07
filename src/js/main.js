@@ -30,6 +30,7 @@ const othello = {
 	el: {},
 	init() {
 		// fast references
+		this.el.content = window.find("content");
 		this.el.gameBoard = window.find(".game-board");
 		this.el.board = window.find(".board");
 		this.el.gameOver = window.find(".game-over");
@@ -107,6 +108,9 @@ const othello = {
 				othello.el.whiteScore.html(0);
 				// clear settings
 				window.settings.clear();
+				break;
+			case "set-theme":
+				Self.el.content.data({ theme: event.arg });
 				break;
 			case "output-pgn":
 				state = Self.serialize();

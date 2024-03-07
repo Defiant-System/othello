@@ -1,43 +1,122 @@
 
-/* latin */
-@font-face {
-	font-family: 'Questrial';
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url(~/fonts/questrial.woff2) format('woff2');
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* latin */
-@font-face {
-	font-family: 'Tangerine';
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url(~/fonts/tangerine.woff2) format('woff2');
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 
-
-@sprite: url('~/img/sprite.png');
+@sprite: url(~/img/sprite.png);
 
 background: transparent;
 overflow: visible;
 
 content {
-	background: #114410 url('~/img/bg.jpg') 50% 50% no-repeat;
+	background: #114410;
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	font-family: 'Questrial', serif;
+	font-family: "Questrial", serif;
 	letter-spacing: 1px;
-	border: 11px solid #141;
 	border-radius: inherit;
 	user-select: none;
 	box-shadow: 0 0 0;
 	transition: box-shadow 410ms;
+
+	&[data-theme="classic"] {
+		background: #114410 url(~/img/bg.jpg) 50% 50% no-repeat;
+		border: 16px solid #141;
+	}
+
+	&[data-theme="modern"] {
+		background: #131;
+		padding: 7px 9px 9px;
+
+		.game-start {
+			z-index: 1;
+			top: 127px;
+			left: 73px;
+			background: linear-gradient(to bottom, #5e895d 0%, #517c50 37%,#517d50 38%, #2d642b 100%);
+			box-shadow: 0 0 0 2px rgba(#131,.35);
+		}
+
+		.board {
+			position: relative;
+			background: #363;
+			border-radius: 8px;
+			box-shadow: 0px 6px 0px 0px #242;
+			padding: 7px;
+			visibility: visible;
+			opacity: 1;
+
+			&:before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: -5px;
+				border-radius: inherit;
+				background-image: radial-gradient(ellipse at bottom center, rgba(#fff,.35), transparent 160%);
+				pointer-events: none;
+			}
+
+			&:after {
+				content: "";
+				background-image: linear-gradient(90deg, transparent, rgba(#fff,.5), transparent);
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				height: 1px;
+				mix-blend-mode: soft-light;
+				pointer-events: none;
+			}
+
+			table {
+				border-radius: 3px;
+				box-shadow: 0 0 0 3px rgba(#020,.6);
+
+				tr {
+					td {
+						position: relative;
+						border-right: 2px solid rgba(#020,.5);
+						border-bottom: 2px solid rgba(#020,.5);
+
+						&:after {
+							content: "";
+							position: absolute;
+							top: 0;
+							left: 0;
+							right: 0;
+							bottom: 0;
+							z-index: 1;
+							box-shadow: inset 0 1px 0 rgba(#cfc,.1);
+						}
+
+						&:nth-child(8) {
+							border-right: 0;
+						}
+					}
+
+					&:nth-child(1) {
+						td:nth-child(1):after {
+							border-radius: 4px 0 0 0;
+						}
+
+						td:nth-child(8):after {
+							border-radius: 0 4px 0 0;
+						}
+					}
+
+					&:nth-child(8) td {
+						border-bottom: 0;
+					}
+
+					&:nth-child(odd) td:nth-child(odd):after,
+					&:nth-child(even) td:nth-child(even):after {
+							background: rgba(#252,.15);
+					}
+				}
+			}
+		}
+	}
 
 	&.flipping {
 		box-shadow: 0 0 1px transparent;
@@ -114,12 +193,12 @@ content {
 		opacity: 0;
 		visibility: hidden;
 		position: absolute;
-		top: -11px;
-		left: -11px;
-		right: -11px;
-		bottom: -11px;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
 		z-index: 99;
-		background: rgba(0,0,0,.4);
+		background: rgba(#000,.4);
 		transition: opacity 300ms ease-in-out 100ms;
 		perspective: 100px;
 
@@ -128,7 +207,7 @@ content {
 			top: 35%;
 			width: 100%;
 			text-align: center;
-			font-family: 'Tangerine', cursive;
+			font-family: "Tangerine", cursive;
 			font-size: 61px;
 			font-weight: 100;
 			transform: translateZ(0);
@@ -158,12 +237,13 @@ content {
 		height: 56px;
 
 		&:before {
-			content: '';
+			content: "";
 			position: absolute;
 			top: -1px;
 			left: -1px;
 			right: -1px;
 			bottom: -1px;
+			z-index: 2;
 		}
 	}
 
@@ -218,7 +298,7 @@ content {
 		transition: opacity 400ms ease-in-out;
 
 		> div {
-		//	background-color: rgba(0,0,0,0.2);
+		//	background-color: rgba(#000,0.2);
 			position: absolute;
 		}
 
@@ -253,7 +333,7 @@ content {
 			left: 30px;
 			right: 30px;
 			height: 0px;
-			border-top: 1px solid rgba(0,0,0,0.1);
+			border-top: 1px solid rgba(#000,0.1);
 			border-bottom: 1px solid rgba(255,255,255,0.1);
 		}
 
@@ -266,12 +346,12 @@ content {
 			font-size: 23px;
 			line-height: 16px;
 			color: #efe;
-			text-shadow: 0px 1px 1px rgba(0,0,0,0.35);
+			text-shadow: 0px 1px 1px rgba(#000,0.35);
 		}
 	}
 
 	.game-over {
-		background-color: rgba(0,0,0,0.2);
+		background-color: rgba(#000,0.2);
 		top: 5px;
 		left: 0px;
 		width: 245px;
@@ -279,7 +359,7 @@ content {
 		letter-spacing: 0;
 		line-height: 16px;
 		text-align: center;
-		text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+		text-shadow: 0px 1px 1px rgba(#000,0.2);
 		visibility: hidden;
 		opacity: 0;
 		z-index: 1;
@@ -347,7 +427,7 @@ content {
 			font-size: 23px;
 			font-family: Questrial;
 			line-height: 54px;
-			text-shadow: 0px 2px 1px rgba(0,0,0,0.35);
+			text-shadow: 0px 2px 1px rgba(#000,0.35);
 		}
 	}
 }
@@ -478,3 +558,22 @@ content {
 	}
 }
 
+
+/* latin */
+@font-face {
+	font-family: "Questrial";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url(~/fonts/questrial.woff2) format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+	font-family: "Tangerine";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url(~/fonts/tangerine.woff2) format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}

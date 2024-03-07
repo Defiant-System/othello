@@ -10,6 +10,10 @@
 			<Menu name="Possibilities" check-group="game-option" click="option-possibilities"/>
 			<Menu name="Possibilities &amp; Values" check-group="game-option" click="option-possibilities-values"/>
 		</Menu>
+		<Menu name="Theme">
+			<Menu name="Modern" check-group="game-theme" click="set-theme" arg="modern" is-checked="1"/>
+			<Menu name="Classic" check-group="game-theme" click="set-theme" arg="classic"/>
+		</Menu>
 		<Menu name="Sound Effects" check-group="sound-fx" click="toggle-sound"/>
 		<Menu type="divider"/>
 		<Menu name="Quit Othello" shell="win -c"/>
