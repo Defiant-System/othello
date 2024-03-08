@@ -63,18 +63,17 @@ const othello = {
 			});
 		}
 
-
-		let str = `<table cellpadding="0" cellspacing="0">`;
+		let str = [`<table cellpadding="0" cellspacing="0">`];
 		for (let y=0; y<8; y++) {
-			str += `<tr>`;
+			str.push(`<tr>`);
 			for (let x=0; x<8; x++) {
-				str += `<td align="center" valign="middle" y="${y}" x="${x}">&nbsp;</td>`;
+				str.push(`<td y="${y}" x="${x}">&nbsp;</td>`);
 			}
-			str += `</tr>`;
+			str.push(`</tr>`);
 		}
-		str += `</table>`;
+		str.push(`</table>`);
 		// append board html
-		this.el.board.html(str);
+		this.el.board.html(str.join(""));
 		// reference to cells
 		this.el.cells = this.el.board.find("td");
 
@@ -100,12 +99,16 @@ const othello = {
 				break;
 			// custom events
 			case "reset-game":
-				othello.el.gameBoard.prop({"className": "game-board"});
+				Self.el.gameBoard.prop({"className": "game-board"});
 				started = false;
 				progress = 1;
+
+				Self.el.cells.html("");
+				Self.el.cells.removeClass("black white");
+
 				// reset toolbar score
-				othello.el.blackScore.html(0);
-				othello.el.whiteScore.html(0);
+				Self.el.blackScore.html(0);
+				Self.el.whiteScore.html(0);
 				// clear settings
 				window.settings.clear();
 				break;
