@@ -59,7 +59,7 @@ const othello = {
 					default:
 						let xArg = xMenu.getAttribute("arg");
 						xMenu.removeAttribute("is-checked");;
-						if (xArg === arg) {
+						if (xArg == arg) {
 							// update menu item
 							xMenu.setAttribute("is-checked", 1);
 							// call dispatch
