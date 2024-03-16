@@ -41,8 +41,6 @@ const othello = {
 		// get settings, if any
 		this.settings = window.settings.getItem("settings") || defaultSettings;
 
-		console.log( this.settings );
-
 		// apply settings
 		for (let type in this.settings) {
 			let arg = this.settings[type];
