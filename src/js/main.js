@@ -23,7 +23,8 @@ let value = new Array(50, -1, 5, 2, 2, 5, -1, 50,
 // default settings
 const defaultSettings = {
 	"sound-fx": "on",
-	"game-option": "option-possibilities",
+	"game-option": "possibilities-values",
+	"game-theme": "modern",
 };
 
 const othello = {
@@ -40,25 +41,33 @@ const othello = {
 		// get settings, if any
 		this.settings = window.settings.getItem("settings") || defaultSettings;
 
+		console.log( this.settings );
+
 		// apply settings
 		for (let type in this.settings) {
 			let arg = this.settings[type];
 			// update menu
 			window.bluePrint.selectNodes(`//Menu[@check-group="${type}"]`).map(xMenu => {
-				if (type === "sound-fx") {
-					if (arg === "on") {
-						xMenu.setAttribute("is-checked", 1);
-						this.dispatch({ type: "toggle-sound", checked: 1 });
-					} else {
-						xMenu.removeAttribute("is-checked");
-						this.dispatch({ type: "toggle-sound", checked: -1 });
-					}
-				} else {
-					let xArg = xMenu.getAttribute("click");
-					if (xArg == arg) xMenu.setAttribute("is-checked", 1);
-					else xMenu.removeAttribute("is-checked");
-					// call dispatch
-					this.dispatch({ type: arg });
+				switch (type) {
+					case "sound-fx":
+						if (arg === "on") {
+							xMenu.setAttribute("is-checked", 1);
+							this.dispatch({ type: "toggle-sound", checked: 1 });
+						} else {
+							xMenu.removeAttribute("is-checked");
+							this.dispatch({ type: "toggle-sound", checked: -1 });
+						}
+						break;
+					default:
+						let xArg = xMenu.getAttribute("arg");
+						xMenu.removeAttribute("is-checked");;
+						if (xArg === arg) {
+							// update menu item
+							xMenu.setAttribute("is-checked", 1);
+							// call dispatch
+							type = xMenu.getAttribute("click");
+							this.dispatch({ type, arg});
+						}
 				}
 			});
 		}
@@ -114,6 +123,8 @@ const othello = {
 				break;
 			case "set-theme":
 				Self.el.content.data({ theme: event.arg });
+				// update settings
+				Self.settings["game-theme"] = event.arg;
 				break;
 			case "output-pgn":
 				state = Self.serialize();
@@ -142,26 +153,15 @@ const othello = {
 					Self.put((cell.parentNode.rowIndex * 8) + cell.cellIndex);
 				}
 				break;
-			case "option-no-helpers":
-				show_poss = 0;
-				show_values = 0;
+			case "set-options":
+				switch (event.arg) {
+					case "no-helpers":           show_poss = 0; show_values = 0; break;
+					case "possibilities":        show_poss = 1; show_values = 0; break;
+					case "possibilities-values": show_poss = 1; show_values = 1; break;
+				}
 				Self.toggle();
 				// update settings
-				Self.settings["game-option"] = event.type;
-				break;
-			case "option-possibilities":
-				show_poss = 1;
-				show_values = 0;
-				Self.toggle();
-				// update settings
-				Self.settings["game-option"] = event.type;
-				break;
-			case "option-possibilities-values":
-				show_poss = 1;
-				show_values = 1;
-				Self.toggle();
-				// update settings
-				Self.settings["game-option"] = event.type;
+				Self.settings["game-option"] = event.arg;
 				break;
 		}
 	},
