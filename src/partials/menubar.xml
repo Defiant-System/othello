@@ -23,6 +23,6 @@
 		<Menu type="divider"/>
 		<Menu name="Output PGN" click="output-pgn"/>
 		<Menu type="divider"/>
-		<Menu name="License"/>
+		<Menu name="License" shell="win -al"/>
 	</Menu>
 </MenuBar>
