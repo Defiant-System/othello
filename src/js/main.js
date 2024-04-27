@@ -1,4 +1,7 @@
 
+@import "./test.js"
+
+
 let started = false;
 let move = 1;
 let progress = 1;
@@ -88,6 +91,10 @@ const othello = {
 		if (pgn) {
 			this.dispatch({ type: "game-from-pgn", pgn });
 		}
+
+		// DEV-ONLY-START
+		Test.init(this);
+		// DEV-ONLY-END
 	},
 	dispatch(event) {
 		let Self = othello,
