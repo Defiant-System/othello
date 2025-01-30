@@ -1,6 +1,7 @@
 <ToolBar>
 	<Group width="50%">
 		<Tool name="Reset" click="reset-game"/>
+		<Tool name="Music" click="toggle-music"/>
 	</Group>
 	<Group width="50%" class="toolbar-score">
 		<Field>

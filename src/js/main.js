@@ -50,6 +50,15 @@ const othello = {
 			// update menu
 			window.bluePrint.selectNodes(`//Menu[@check-group="${type}"]`).map(xMenu => {
 				switch (type) {
+					case "music":
+						if (arg === "on") {
+							xMenu.setAttribute("is-checked", 1);
+							this.dispatch({ type: "toggle-music", checked: 1 });
+						} else {
+							xMenu.removeAttribute("is-checked");
+							this.dispatch({ type: "toggle-music", checked: -1 });
+						}
+						break;
 					case "sound-fx":
 						if (arg === "on") {
 							xMenu.setAttribute("is-checked", 1);
@@ -91,6 +100,9 @@ const othello = {
 		if (pgn) {
 			this.dispatch({ type: "game-from-pgn", pgn });
 		}
+
+		// music info
+		this.tune = { name: "tune-1" };
 
 		// DEV-ONLY-START
 		Test.init(this);
@@ -137,6 +149,31 @@ const othello = {
 				break;
 			case "game-from-pgn":
 				Self.startGame(event.pgn);
+				break;
+			case "toggle-music":
+				if (!Self.tune.song) {
+					let opt = {
+							onend: e => {
+								if (!Self.tune.song) return;
+
+								let [a, b] = Self.tune.name.split("-");
+								b = (+b) + 1;
+								// next tune
+								if (b > 2) b = 1;
+								Self.tune.name = "tune-"+ b;
+								// play next song
+								playSong();
+							}
+						},
+						playSong = () => window.audio.play(Self.tune.name, opt)
+												.then(song => Self.tune.song = song);
+					playSong();
+
+					return true;
+				} else if (Self.tune.song) {
+					Self.tune.song.stop();
+					delete Self.tune.song;
+				}
 				break;
 			case "toggle-sound":
 				window.audio.mute = event.checked < 0;

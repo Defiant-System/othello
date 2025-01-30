@@ -2,6 +2,9 @@
 let Test = {
 	init(APP) {
 
+		// setTimeout(() => window.find(`.toolbar-tool_[data-click="toggle-music"]`).trigger("click"), 500);
+		// setTimeout(() => APP.dispatch({ type: "toggle-music" }), 500);
+
 		return;
 		let pgn = {
 			    "move": 30,

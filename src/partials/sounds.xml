@@ -1,4 +1,6 @@
 <Sounds>
+	<i id="tune-1" url="/cdn/audio/chiptune/cydonian_sky.xm"/>
+	<i id="tune-2" url="/cdn/audio/chiptune/return_of_the_ninja.xm"/>
 	<i id="jingle-on" url="~/sound/jingle-on.mp3"/>
 	<i id="jingle-off" url="~/sound/jingle-off.mp3"/>
 	<i id="loose" url="~/sound/loose.mp3"/>
